@@ -156,17 +156,34 @@ footer a{color:var(--pink-deep); font-weight:700; text-decoration:none;}
   </div>
 
   <div class="tab-bar" id="tabBar">
-    <button type="button" class="tab-btn active" data-sec="sec1">📋 프롬프트</button>
+    <button type="button" class="tab-btn active" data-sec="sec0">💡 참고사항</button>
+    <button type="button" class="tab-btn" data-sec="sec1">📋 프롬프트</button>
     <button type="button" class="tab-btn" data-sec="sec2">🎥 참고영상 다운로드</button>
     <button type="button" class="tab-btn" data-sec="sec3">🎬 사용법 영상</button>
   </div>
 
-  <section class="block" data-sec="sec1">
-    <h2 class="sec-title">1️⃣ 프롬프트 복사하기</h2>
+  <section class="block" data-sec="sec0">
+    <h2 class="sec-title">1️⃣ 영상 만들기 전에, 참고사항!</h2>
+    <div class="card">
+      <p><strong>💡 우리 집 느낌을 더 살리고 싶다면?</strong></p>
+      <p>저는 실제 집 사진을 참고해서 배경 이미지를 따로 만들었어요!<br>익숙한 공간이 나오니 더 우리 집 같더라고요ㅋㅋ 🏠💖</p>
+      <p>집 내부 사진 2~3장을 ChatGPT에 올리고, 이렇게 요청해 보세요 👇</p>
+      <button type="button" class="copy-btn" onclick="copyTextarea(this, 'bgPromptText', '📋 배경 이미지 프롬프트 복사하기')">📋 배경 이미지 프롬프트 복사하기</button>
+      <textarea id="bgPromptText" class="prompt-box" readonly spellcheck="false" style="min-height:140px;">첨부한 집 사진을 참고해서
+영상에 쓸 세로 9:16 배경 이미지를 만들어줘.
+우리 집 구조와 분위기는 살리고,
+사람과 글자, 어수선한 물건은 지워줘.
+가운데는 아이가 움직일 수 있도록 비워줘.</textarea>
+      <p style="margin-top:10px;">완성된 이미지를 저장한 뒤, <strong>힉스필드에 인물 사진·참고 영상과 함께 배경 참고용으로 첨부</strong>하면 돼요 😊</p>
+    </div>
+  </section>
+
+  <section class="block" data-sec="sec1" style="display:none;">
+    <h2 class="sec-title">2️⃣ 프롬프트 복사하기</h2>
     <div class="card">
       <p>아래 버튼 누르면 프롬프트 전체가 한 번에 복사돼요. 힉스필드 들어가서 붙여넣고, 아래 참고영상이랑 바꾸고 싶은 사람 사진·배경 사진을 같이 올리면 돼요.</p>
       <a class="link-btn" href="https://higgsfield.ai/" target="_blank" rel="noopener">🔗 힉스필드 바로가기</a>
-      <button type="button" class="copy-btn" onclick="copyPrompt(this)">📋 프롬프트 한번에 복사하기</button>
+      <button type="button" class="copy-btn" onclick="copyTextarea(this, 'promptText', '📋 프롬프트 한번에 복사하기')">📋 프롬프트 한번에 복사하기</button>
       <textarea id="promptText" class="prompt-box" readonly spellcheck="false">Full Character Replacement — Identity and Motion Preservation
 Vertical Instagram Reels — 9:16
 
@@ -316,7 +333,7 @@ Create a photorealistic, completely text-free, vertical 9:16 video of the person
   </section>
 
   <section class="block" data-sec="sec2" style="display:none;">
-    <h2 class="sec-title">2️⃣ 참고영상 다운로드</h2>
+    <h2 class="sec-title">3️⃣ 참고영상 다운로드</h2>
     <div class="card">
       <p>프롬프트에서 말하는 "ORIGINAL VIDEO"가 바로 이 영상이에요. 다운로드해서 힉스필드에 함께 올리고, 바꾸고 싶은 사람 사진이랑 배경 사진만 새로 올리면 돼요.</p>
       <video controls preload="metadata">
@@ -327,7 +344,7 @@ Create a photorealistic, completely text-free, vertical 9:16 video of the person
   </section>
 
   <section class="block" data-sec="sec3" style="display:none;">
-    <h2 class="sec-title">3️⃣ 사용법 영상</h2>
+    <h2 class="sec-title">4️⃣ 사용법 영상</h2>
     <div class="card">
       <p>프롬프트랑 참고영상을 실제로 어떻게 올리고 적용하는지, 화면으로 바로 보여드려요.</p>
       <video controls preload="metadata">
@@ -346,8 +363,8 @@ Create a photorealistic, completely text-free, vertical 9:16 video of the person
 </footer>
 
 <script>
-function copyPrompt(btn){
-  const ta = document.getElementById('promptText');
+function copyTextarea(btn, taId, defaultLabel){
+  const ta = document.getElementById(taId);
   ta.focus();
   ta.select();
   let ok = false;
@@ -362,7 +379,7 @@ function copyPrompt(btn){
   }
   btn._timer = setTimeout(() => {
     btn.classList.remove('copied');
-    btn.textContent = '📋 프롬프트 한번에 복사하기';
+    btn.textContent = defaultLabel;
   }, 2200);
 }
 
