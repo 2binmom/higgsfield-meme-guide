@@ -121,6 +121,8 @@ section.block{padding-top:22px;}
 }
 video{width:100%; border-radius:12px; display:block; background:#000;}
 .heads-up{margin-top:4px; background:var(--pink-bg); color:var(--pink-deep); border-radius:12px; padding:14px 16px; font-size:15px; line-height:1.7; text-align:center;}
+.save-tip{margin:12px 0; background:var(--pink-bg); color:var(--pink-deep); border-radius:12px; padding:13px 16px; font-size:14.5px; line-height:1.85; text-align:left;}
+.save-tip b{color:var(--ink);}
 footer{
   text-align:center; padding:36px 18px 50px; color:var(--sub); font-size:12.5px;
   border-top:1px solid var(--line); margin-top:30px; line-height:1.8;
@@ -337,9 +339,14 @@ Create a photorealistic, completely text-free, vertical 9:16 video of the person
     <h2 class="sec-title">3️⃣ 참고영상 다운로드</h2>
     <div class="card">
       <p>프롬프트에서 말하는 "ORIGINAL VIDEO"가 바로 이 영상이에요. 다운로드해서 힉스필드에 함께 올리고, 바꾸고 싶은 사람 사진이랑 배경 사진만 새로 올리면 돼요.</p>
-      <video controls preload="metadata">
+      <video controls preload="metadata" playsinline>
         <source src="higgsfield-reference.mp4" type="video/mp4">
       </video>
+      <div class="save-tip">
+        📱 <b>폰에서 영상 저장하는 법</b><br>
+        • 아이폰: 위 영상 화면을 <b>길게(꾹) 눌러서 "비디오 저장"</b>을 눌러주세요<br>
+        • 안드로이드: 아래 <b>다운로드 버튼</b>을 누르면 바로 저장돼요
+      </div>
       <a class="dl-btn" href="higgsfield-reference.mp4" download>⬇️ 참고영상 다운로드</a>
     </div>
   </section>
