@@ -113,6 +113,12 @@ section.block{padding-top:22px;}
   border-radius:12px; padding:14px; font-size:16px; font-weight:800;
   margin-top:12px;
 }
+.link-btn{
+  display:flex; align-items:center; justify-content:center; gap:8px;
+  background:#fff; color:var(--pink-deep); text-decoration:none;
+  border:1.5px solid var(--pink-deep); border-radius:12px; padding:13px;
+  font-size:16px; font-weight:800; margin-bottom:12px;
+}
 video{width:100%; border-radius:12px; display:block; background:#000;}
 .heads-up{margin-top:4px; background:var(--pink-bg); color:var(--pink-deep); border-radius:12px; padding:14px 16px; font-size:15px; line-height:1.7; text-align:center;}
 footer{
@@ -158,7 +164,8 @@ footer a{color:var(--pink-deep); font-weight:700; text-decoration:none;}
   <section class="block" data-sec="sec1">
     <h2 class="sec-title">1️⃣ 프롬프트 복사하기</h2>
     <div class="card">
-      <p>아래 버튼 누르면 프롬프트 전체가 한 번에 복사돼요. 그대로 AI 영상 생성 도구(힉스필드 등)에 붙여넣고, 아래 참고영상이랑 바꾸고 싶은 사람 사진·배경 사진을 같이 올리면 돼요.</p>
+      <p>아래 버튼 누르면 프롬프트 전체가 한 번에 복사돼요. 힉스필드 들어가서 붙여넣고, 아래 참고영상이랑 바꾸고 싶은 사람 사진·배경 사진을 같이 올리면 돼요.</p>
+      <a class="link-btn" href="https://higgsfield.ai/" target="_blank" rel="noopener">🔗 힉스필드 바로가기</a>
       <button type="button" class="copy-btn" onclick="copyPrompt(this)">📋 프롬프트 한번에 복사하기</button>
       <textarea id="promptText" class="prompt-box" readonly spellcheck="false">Full Character Replacement — Identity and Motion Preservation
 Vertical Instagram Reels — 9:16
