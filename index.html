@@ -94,16 +94,40 @@ section.block{padding-top:22px;}
 }
 .card p{font-size:16.5px; line-height:1.75; margin:0 0 10px;}
 .card p:last-child{margin-bottom:0;}
-.step-guide{display:flex; flex-direction:column; gap:10px; margin-bottom:14px;}
-.step-row{display:flex; gap:12px; align-items:flex-start;}
-.step-num{
-  flex:none; width:30px; height:30px; border-radius:50%; background:var(--pink-deep);
-  color:#fff; font-weight:800; font-size:15px; display:flex; align-items:center; justify-content:center;
-  margin-top:2px;
+.shot-toggle{display:flex; gap:8px; margin-bottom:12px;}
+.shot-toggle-btn{
+  flex:1; padding:10px; border-radius:999px; border:1.5px solid var(--line); background:#fff;
+  color:var(--sub); font-weight:700; font-size:14px; cursor:pointer; font-family:inherit;
 }
-.step-body{flex:1; min-width:0;}
-.step-body p{font-size:16px; line-height:1.7; margin:0 0 8px; color:var(--ink);}
-.step-img{width:100%; border-radius:12px; border:1px solid var(--line); display:block;}
+.shot-toggle-btn.active{background:var(--pink-deep); color:#fff; border-color:var(--pink-deep);}
+.shot-carousel{position:relative; border-radius:12px; overflow:hidden; background:#111; box-shadow:var(--shadow);}
+.shot-track{display:flex; overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; scrollbar-width:none;}
+.shot-track::-webkit-scrollbar{display:none;}
+.shot-slide{
+  flex:0 0 100%; scroll-snap-align:start; scroll-snap-stop:always;
+  height:460px; display:flex; flex-direction:column; align-items:center; justify-content:center; background:#111;
+}
+.shot-slide img{max-width:100%; max-height:100%; width:auto; height:auto; object-fit:contain; display:block;}
+.shot-caption{
+  position:absolute; left:0; right:0; bottom:0; padding:11px 16px;
+  background:linear-gradient(0deg, rgba(0,0,0,0.78), rgba(0,0,0,0));
+  color:#fff; font-size:13.5px; line-height:1.6; pointer-events:none;
+}
+.shot-arrow{
+  position:absolute; top:40%; transform:translateY(-50%); width:34px; height:34px; border-radius:50%;
+  background:rgba(0,0,0,0.45); color:#fff; border:none; font-size:19px; line-height:1;
+  display:flex; align-items:center; justify-content:center; cursor:pointer;
+}
+.shot-arrow.prev{left:8px;}
+.shot-arrow.next{right:8px;}
+.shot-counter{
+  position:absolute; top:10px; right:10px; background:rgba(0,0,0,0.55); color:#fff;
+  font-size:12px; padding:3px 10px; border-radius:999px;
+}
+.shot-dots{display:flex; justify-content:center; gap:6px; margin:10px 0 2px;}
+.shot-dot{width:7px; height:7px; border-radius:50%; background:var(--line); border:none; padding:0; cursor:pointer;}
+.shot-dot.active{background:var(--pink-deep); width:18px; border-radius:4px;}
+.step6-note{font-size:16px; line-height:1.7; margin:14px 0 0; color:var(--ink);}
 .copy-btn{
   display:inline-flex; align-items:center; gap:7px; width:100%; justify-content:center;
   background:var(--pink-deep); color:#fff; border:none; border-radius:12px;
@@ -365,50 +389,20 @@ Create a photorealistic, completely text-free, vertical 9:16 video of the person
   <section class="block" data-sec="sec3" style="display:none;">
     <h2 class="sec-title">4️⃣ 사용법 영상</h2>
     <div class="card">
-      <p class="heads-up">📍 어디를 눌러야 할지 헷갈리실까봐, 화면 캡처에 번호를 매겨서 순서대로 정리했어요!</p>
-      <div class="step-guide">
-        <div class="step-row">
-          <div class="step-num">1</div>
-          <div class="step-body">
-            <p>힉스필드 접속 후 상단 메뉴에서 <b>Genjutsu</b> 클릭</p>
-            <img class="step-img" src="step1-genjutsu.jpg" alt="힉스필드 상단 메뉴에서 Genjutsu 클릭">
-          </div>
-        </div>
-        <div class="step-row">
-          <div class="step-num">2</div>
-          <div class="step-body">
-            <p>다운 받은 <b>참고 영상</b>을 "Add a reference video" 자리에 넣기</p>
-            <img class="step-img" src="step2-video.jpg" alt="참고 영상 업로드 화면">
-          </div>
-        </div>
-        <div class="step-row">
-          <div class="step-num">3</div>
-          <div class="step-body">
-            <p><b>아이 얼굴(3~4컷 정도) 정면 사진 + 집 배경사진</b>(참고사항 탭에서 챗GPT로 만든 것)을 "Add your characters" 자리에 넣기</p>
-            <img class="step-img" src="step3-face.jpg" alt="아이 얼굴·배경사진 업로드 화면">
-          </div>
-        </div>
-        <div class="step-row">
-          <div class="step-num">4</div>
-          <div class="step-body">
-            <p>복사해둔 <b>프롬프트</b>를 Prompt 칸에 붙여넣기</p>
-            <img class="step-img" src="step4-prompt.jpg" alt="프롬프트 입력 화면">
-          </div>
-        </div>
-        <div class="step-row">
-          <div class="step-num">5</div>
-          <div class="step-body">
-            <p><b>Generate(만들기)</b> 버튼 클릭!</p>
-            <img class="step-img" src="step5-generate.jpg" alt="만들기 버튼 클릭 화면">
-          </div>
-        </div>
-        <div class="step-row">
-          <div class="step-num">6</div>
-          <div class="step-body">
-            <p>그럼 아이 얼굴로 영상이 만들어져요 → 그걸 블로(VLLO)에서 자막 편집하면 완성!<br>(편집 프로젝트 탭에서 자막 위치까지 맞춰둔 파일을 받아서 넣으면 더 재밌어요)</p>
-          </div>
-        </div>
+      <p class="heads-up">📍 어디를 눌러야 할지 헷갈리실까봐, 화면 캡처에 번호를 매겨서 순서대로 정리했어요! 넘겨가면서 보세요 👉</p>
+      <div class="shot-toggle">
+        <button type="button" class="shot-toggle-btn active" data-mode="desktop" onclick="setShotMode('desktop')">💻 컴퓨터로 보기</button>
+        <button type="button" class="shot-toggle-btn" data-mode="mobile" onclick="setShotMode('mobile')">📱 폰으로 보기</button>
       </div>
+      <div class="shot-carousel">
+        <div class="shot-track" id="shotTrack"></div>
+        <button type="button" class="shot-arrow prev" onclick="shotGo(-1)" aria-label="이전 화면">‹</button>
+        <button type="button" class="shot-arrow next" onclick="shotGo(1)" aria-label="다음 화면">›</button>
+        <div class="shot-counter" id="shotCounter">1 / 5</div>
+        <div class="shot-caption" id="shotCaption"></div>
+      </div>
+      <div class="shot-dots" id="shotDots"></div>
+      <p class="step6-note">그럼 아이 얼굴로 영상이 만들어져요 → 그걸 블로(VLLO)에서 자막 편집하면 완성!<br>(편집 프로젝트 탭에서 자막 위치까지 맞춰둔 파일을 받아서 넣으면 더 재밌어요)</p>
       <p class="heads-up">🎁 첫 1회는 무료로 사용 가능해요!<br>유료가 잘 나오긴 하는데... 저는 유료는 엉망으로 나오고,<br>오히려 <strong>무료로 만든 영상</strong>이 이 사이트에 올려둔 참고영상이에요 😆</p>
       <p class="heads-up">⚠️ AI다 보니 같은 프롬프트를 써도 사람마다 결과가 다를 수 있어요!</p>
     </div>
@@ -470,6 +464,83 @@ function showSection(id){
 }
 document.querySelectorAll('.tab-btn').forEach(btn => {
   btn.addEventListener('click', () => showSection(btn.getAttribute('data-sec')));
+});
+
+const SHOT_SETS = {
+  desktop: [
+    { img: 'step1-genjutsu.jpg', caption: '① 힉스필드 접속 후 상단 메뉴에서 Genjutsu 클릭' },
+    { img: 'step2-video.jpg', caption: '② 다운 받은 참고 영상을 "Add a reference video" 자리에 넣기' },
+    { img: 'step3-face.jpg', caption: '③ 아이 얼굴(3~4컷)+집 배경사진을 "Add your characters" 자리에 넣기' },
+    { img: 'step4-prompt.jpg', caption: '④ 복사해둔 프롬프트를 Prompt 칸에 붙여넣기' },
+    { img: 'step5-generate.jpg', caption: '⑤ Generate(만들기) 버튼 클릭!' },
+  ],
+  mobile: [
+    { img: 'mobile-step1.jpg', caption: '① 왼쪽 위 사이드 메뉴 아이콘 탭해서 메뉴 열기' },
+    { img: 'mobile-step2.jpg', caption: '② 메뉴에서 "Higgsfield Genjutsu" 선택' },
+    { img: 'mobile-step3.jpg', caption: '③ "생성 시작하기" 탭' },
+    { img: 'mobile-step4.jpg', caption: '④ 참고 영상(1)·얼굴+배경사진(2) 추가 → 옵션(3) → 생성하기(4)' },
+    { img: 'mobile-step5.jpg', caption: '⑤ 옵션에서 "프롬프트" 칸 열어서 복사한 프롬프트 붙여넣기' },
+  ],
+};
+
+let shotMode = 'desktop';
+let shotIndex = 0;
+const shotTrack = document.getElementById('shotTrack');
+const shotDots = document.getElementById('shotDots');
+const shotCounter = document.getElementById('shotCounter');
+const shotCaption = document.getElementById('shotCaption');
+
+function renderShots(){
+  const set = SHOT_SETS[shotMode];
+  shotTrack.innerHTML = set.map(s => `
+    <div class="shot-slide"><img src="${s.img}" alt="${s.caption}"></div>
+  `).join('');
+  shotDots.innerHTML = set.map((s, i) => `
+    <button type="button" class="shot-dot" onclick="shotGoTo(${i})" aria-label="${i + 1}번째 화면"></button>
+  `).join('');
+}
+
+function applyShotIndex(i){
+  shotIndex = i;
+  const set = SHOT_SETS[shotMode];
+  shotCounter.textContent = (i + 1) + ' / ' + set.length;
+  shotCaption.textContent = set[i].caption;
+  document.querySelectorAll('#shotDots .shot-dot').forEach((d, di) => d.classList.toggle('active', di === i));
+}
+
+function shotGoTo(i){
+  const set = SHOT_SETS[shotMode];
+  if (i < 0) i = 0;
+  if (i > set.length - 1) i = set.length - 1;
+  const dist = Math.abs(i - shotIndex);
+  shotTrack.scrollTo({ left: i * shotTrack.clientWidth, behavior: dist > 1 ? 'instant' : 'smooth' });
+  applyShotIndex(i);
+}
+function shotGo(delta){ shotGoTo(shotIndex + delta); }
+
+function setShotMode(mode){
+  if (mode === shotMode) return;
+  shotMode = mode;
+  document.querySelectorAll('.shot-toggle-btn').forEach(b => b.classList.toggle('active', b.getAttribute('data-mode') === mode));
+  renderShots();
+  shotTrack.scrollTo({ left: 0, behavior: 'instant' });
+  applyShotIndex(0);
+}
+
+renderShots();
+applyShotIndex(0);
+
+shotTrack.addEventListener('scroll', () => {
+  const i = Math.round(shotTrack.scrollLeft / shotTrack.clientWidth);
+  if (i !== shotIndex) applyShotIndex(i);
+});
+
+let shotResizeTimer;
+window.addEventListener('resize', () => {
+  clearTimeout(shotResizeTimer);
+  shotResizeTimer = setTimeout(() => {
+    shotTrack.scrollTo({ left: shotIndex * shotTrack.clientWidth, behavior: 'instant' });
+  }, 150);
 });
 
 function shareKakao(btn){
